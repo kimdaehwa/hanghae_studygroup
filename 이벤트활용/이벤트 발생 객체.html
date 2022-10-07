@@ -1,4 +1,4 @@
-이벤트 발생 객체
+<!-- 이벤트 발생 객체
 이벤트 내부에서 문서 객체 변수를 사용해서 문서 객체와 관련된 정보 추출.
 
 이전에 사용했던 코드
@@ -41,7 +41,7 @@ listener()함수 내부에서 textarea 변수에 접근할 수 없어 오류 발
 화살표 함수가 아닌 function() {} 형태로 함수를 선언한 경우 사용
 
 라이브러리와 프레임워크에 따라 선호하는 형태가 다르다, 라이브러리와 프레임워크를 사용할 경우,
-해당 라이브러리와 프레임워크의 문서를 살펴보면서 어떤 형태가 더 일반적으로 사용되는지 확인하고 활용,
+해당 라이브러리와 프레임워크의 문서를 살펴보면서 어떤 형태가 더 일반적으로 사용되는지 확인하고 활용, -->
 event.currentTarget 사용 경우
 <script>
   const listener = (event) => {
@@ -56,7 +56,7 @@ event.currentTarget 사용 경우
   })
 </script>
 
-this 키워드를 사용하는 경우
+<!-- this 키워드를 사용하는 경우
 
 <script>
   const listener = function (event) {
@@ -69,4 +69,4 @@ this 키워드를 사용하는 경우
     const h1 = document.querySelector('h1')
     textarea.addEventListener('keyup', listener)
   })
-</script>
+</script> -->
