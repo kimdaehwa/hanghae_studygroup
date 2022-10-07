@@ -56,17 +56,15 @@ shiftKey = Shift키 눌렀는지
   </script>
   <body>
     <h1></h1>
-  </body>
+  </body> -->
 
-</script> -->
-
-키로 별 움직이기
+<!-- 키로 별 움직이기
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     // 별의 초기 설정
     const star = document.querySelector('h1')
-    star.style.position = 'absolute' // ---> style속성을 조작하여 position값을 설정.
+    star.style.position = 'absolute' // --- style속성을 조작하여 position값을 설정.
 
     // 별의 이동을 출력하는 기능
     let [x, y] =[0, 0]
@@ -77,8 +75,8 @@ shiftKey = Shift키 눌렀는지
 
     }
     print()
-    const [left, up, right, down] = [37, 38, 39, 40]  //---> 방향키 keycode(키코드)를 쉽게 사용할 수 있게 변수를 사용해서 이름 붙임.
-    document.body.addEventListener('keydown', (event) => { //---> keydown = 키보드가 눌릴 때 실행.
+    const [left, up, right, down] = [37, 38, 39, 40]  //--- 방향키 keycode(키코드)를 쉽게 사용할 수 있게 변수를 사용해서 이름 붙임.
+    document.body.addEventListener('keydown', (event) => { //--- keydown = 키보드가 눌릴 때 실행.
       switch (event.keyCode) {
         case left:
           x -= 1
@@ -99,4 +97,5 @@ shiftKey = Shift키 눌렀는지
 </script>
 <body>
   <h1>*</h1>
-</body>
+</body> -->
+
