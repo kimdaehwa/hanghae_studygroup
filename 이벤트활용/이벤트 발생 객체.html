@@ -46,27 +46,35 @@ event.currentTarget 사용 경우
 <script>
   const listener = (event) => {
     const length = event.currentTarget.value.length  // ---- event.currentTraget가 textarea가 된다.
+    const h1 = document.querySelector('h1')
     h1.textContent = `글자 수: ${length}`
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.querySelector('textarea')
-    const h1 = document.querySelector('h1')
     textarea.addEventListener('keyup', listener)
   })
 </script>
+<body>
+  <h1></h1>
+  <textarea></textarea>
+</body>
 
 <!-- this 키워드를 사용하는 경우
 
 <script>
   const listener = function (event) {
-    const length = this.value.length  // ---- this가 textarea가 된다.
+    const length = this.value.length  // ---- this가 textarea가 된다
+    const h1 = document.querySelector('h1')
     h1.textContent = `글자 수: ${length}`
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     const textarea = document.querySelector('textarea')
-    const h1 = document.querySelector('h1')
     textarea.addEventListener('keyup', listener)
   })
-</script> -->
+</script>
+<body>
+  <h1></h1>
+  <textarea></textarea>
+</body> -->
