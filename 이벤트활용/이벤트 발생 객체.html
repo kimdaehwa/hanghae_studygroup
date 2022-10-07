@@ -1,0 +1,72 @@
+이벤트 발생 객체
+이벤트 내부에서 문서 객체 변수를 사용해서 문서 객체와 관련된 정보 추출.
+
+이전에 사용했던 코드
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.querySelector('textarea') //-------]
+    const h1 = document.querySelector('h1')             //       ]
+                                                        //       ] -- textarea는 문서객체 변수로 문서 객체의 value 속성 추출 
+    textarea.addEventListener('keyup', (event) => {     //       ]
+      const length = textarea.value.length              //-------]
+      h1.textContent = `글자 수: ${length}`
+
+    })
+  })
+</script>
+
+상황에 따라 이벤트 리스너 내부에서 그러한 변수에 접근할 수 없는 경우 있음
+listener()함수 내부에서 textarea 변수에 접근할 수 없어 오류 발생
+
+<script>
+  const listener = (event) => {
+    const length = textarea.value.length // ---- 현재블록에서는 textarea 변수를 사용할 수 없다.
+    h1.textContent = `글자 수: ${length}`
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {  //----- 이벤트 리스너가 외부로 분리.
+    const textarea = document.querySelector('textarea')
+    const h1 = document.querySelector('h1')
+    textarea.addEventListener('keyup',  listener)
+  })
+</script>
+
+코드 규모가 커지면 이처럼 이벤트 리스너를 외부로 분리하는 경우 많음
+이때 이벤트를 발생시킨 객체(현재 코드의 textarea)에 접근 방법 2가지
+
+첫째, event.currentTarget 속성 사용
+() => {}와 function () {} 형태 모두 사용 가능
+
+둘째, this 키워드 사용
+화살표 함수가 아닌 function() {} 형태로 함수를 선언한 경우 사용
+
+라이브러리와 프레임워크에 따라 선호하는 형태가 다르다, 라이브러리와 프레임워크를 사용할 경우,
+해당 라이브러리와 프레임워크의 문서를 살펴보면서 어떤 형태가 더 일반적으로 사용되는지 확인하고 활용,
+event.currentTarget 사용 경우
+<script>
+  const listener = (event) => {
+    const length = event.currentTarget.value.length  // ---- event.currentTraget가 textarea가 된다.
+    h1.textContent = `글자 수: ${length}`
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.querySelector('textarea')
+    const h1 = document.querySelector('h1')
+    textarea.addEventListener('keyup', listener)
+  })
+</script>
+
+this 키워드를 사용하는 경우
+
+<script>
+  const listener = function (event) {
+    const length = this.value.length  // ---- this가 textarea가 된다.
+    h1.textContent = `글자 수: ${length}`
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.querySelector('textarea')
+    const h1 = document.querySelector('h1')
+    textarea.addEventListener('keyup', listener)
+  })
+</script>
