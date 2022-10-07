@@ -1,0 +1,62 @@
+<!-- 키보드 이벤트
+keydown = 키 누를 때 실행.
+keypress = 키 입력시 실행. 
+2가지는 웹 브라우저에 따라 한국어, 중국어, 일본어 제대로 처리 못함.
+keyup = 키보드에서 키가 떨어질 때 실행.
+
+남은 글자 수 출력하기 -->
+
+<!-- <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.querySelector('textarea')
+    const h1 = document.querySelector('h1')
+
+    textarea.addEventListener('keyup', (event) => {
+      const length = textarea.value.length // value 속성으로 입력 양식의 글자를 읽어들일수 있다.
+      h1.textContent = `글자 수: ${length}`
+    })
+  })
+</script>
+
+<body>
+  <h1></h1>
+  <textarea></textarea>
+</body> -->
+
+키보드 키 코드 사용하기
+
+code = 입력한 키 -> 입력한 키 나타내는 문자열 있음.
+keyCode = 입력한 키를 나타내는 숫자
+
+altKey = alt 키를 눌렀는지
+ctrlKey = Ctrl키 눌렀는지
+shiftKey = Shift키 눌렀는지
+--> 3속성에는 불 자료형 값이 들어있음.
+
+키보드 이벤트와 관련된 이벤트 속성에
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const h1 = document.querySelector('h1')
+    const print = (event) => {
+      let output = ''
+      output += `alt: ${event.altKey}<br>`
+      output += `ctrl: ${event.ctrlKey}<br>`
+      output += `shift: ${event.shiftKey}<br>`
+      output += `code: ${typeof(event.code) !== 'undefined' ?
+        event.code : event.keyCode}<br>`
+      h1.innerHTML = output
+    }
+    
+    document.addEventListener('Keydown', print)
+    document.addEventListener('keyup', print)
+  })
+  </script>
+  <body>
+    <h1></h1>
+  </body>
+
+
+    }
+  })
+</script>
