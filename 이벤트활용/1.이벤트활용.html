@@ -1,0 +1,75 @@
+<!-- 이벤트 모델(event model) = 이벤트를 연결하는 방법을 의미
+
+특정 DOM요소에 이벤트 리스너를 등록할 때는 addEventListener를 사용
+
+DOM객체. addEventListener(이벤트명, 실행할 함수명, 옵션)
+
+각 매개변수를 살펴보면
+이벤트명 : Javascript에서 발생할 수 있는 이벤트 명을 입력한다.
+함수명 : 해당 변수는 생략 가능하며, 해당 이벤트가 발생할 때 실행할 함수 명을 입력한다.
+옵션: 옵션은 생략이 가능하며, 자식과 부모 요소에서 발생하는 버블링을 제어하기 위한 옵션이다. -->
+
+<html>
+ <a>클릭</a>
+</html>
+<script>
+ const a = document.querySelector('a');
+  a.addEventListener('click', showConsole);
+  function showConsole() {
+  	console.log("콘솔로그 실행");
+  }
+</script>
+
+<!-- 이벤트 리스너 삭제하기
+
+이벤트 리스너의 경우 웹 애플리케이션 메모리 누수의 원인이 될 수 있다.
+더 이상 해당 이벤트 리스너가 필요 없다고 하면 반드시 추가된 이벤트 리스너는  반드시 삭제해주어야 한다.
+특정 페이지에서만 사용하는 이벤트 리스너라면 해당 페이지를 떠날 때 이벤트 리스너를 삭제해준다.
+
+이벤트 리스너를 삭제할 땐 removeEventListener을 이용한다.
+
+DOM객체. removeEventListener(이벤트명, 실행했던 함수명); -->
+
+<!-- //VUE Project EventListener 삭제 예시 코드
+<script>
+export default {
+        mounted() {
+            a.addEventListener('click', this.showConsole);
+        },
+        beforeDestroy() {
+            a.removeEventListener('click', this.showConsole)
+        },
+ }
+ </script> -->
+
+
+<!-- 표준 이벤트 모델 = addEventListener() 메소드를 사용했는데 이 방법이 현재 표준으로 사용하고 있는 방법.
+document.body.addEventListener('keyup', ()=> { })
+
+고전 이벤트 모델 = onOO으로 시작하는 속성에 함수 할당 -> 이벤트 연결
+document.body.onkeyup = (event) => {}
+
+인라인 이벤트 모델 = 고전 이벤트 모델의 속성을 HTML 요소에 직접 넣어 이벤트 연결하는 것. -->
+<!-- <script>
+  const listener = (event) => {
+
+  }
+</script>
+<body onkeyup = "listener(event)">
+
+</body> -->
+
+<!-- 인라인 이벤트 모델은 HTML 요소의 onOO속성에 자바스크립트 코드 넣는 것.
+
+이벤트 모델의 이벤트 리스너 = 첫번째 매개변수로 이벤트 객체를 받음.
+이벤트 객체(Event object) = 사용자 입력(onclick, onkeyup, onscroll 등)을 트리거로 발생한 이벤트 정보를 담은 객체 의미
+
+2000년 이전 -> 인라인 이벤트 모델(간단한 코드 넣기에 편리함)
+2010년 이전 -> 고전 이벤트 모델(JS의 활용 UP, 단점:이벤트 리스너 1개만 연결 가능)
+현재 -> 표준 이벤트 모델(여러 이벤트 리스너를 연결 가능)
+최근 -> 인라인 이벤트 모델+표준 이벤트 모델 사용(프론트엔드 프레임워크들이 인라인 이벤트 모델 활용) -->
+
+
+
+
+
